@@ -1,4 +1,4 @@
-package com.example.billingcoresquare.models;
+package com.square.billingcore.models;
 
 final public class Address {
 

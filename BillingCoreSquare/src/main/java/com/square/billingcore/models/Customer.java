@@ -1,4 +1,4 @@
-package com.example.billingcoresquare.models;
+package com.square.billingcore.models;
 
 public final class Customer {
 
@@ -7,24 +7,6 @@ public final class Customer {
     private Contact contact;
 
     private Customer() { }
-
-    /**
-     * Only for debugging purposes
-     * Looks for CustomerSerializer for Json/Text serialization
-     * @return A string representing the Customer
-     */
-    @Override public String toString() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("===============================");
-        builder.append(Customer.class.toString() + '\n');
-        builder.append("name: " + name + '\n');
-        builder.append("address: " + address.toString() + '\n');
-        builder.append("contact: " + contact.toString() + '\n');
-        builder.append("===============================");
-
-        return builder.toString();
-    }
 
     public class Builder {
 
@@ -61,5 +43,23 @@ public final class Customer {
 
             return customer;
         }
+    }
+
+    /**
+     * Only for debugging purposes
+     * Looks for CustomerSerializer for Json/Text serialization
+     * @return A string representing the Customer
+     */
+    @Override public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("===============================");
+        builder.append(Customer.class.toString() + '\n');
+        builder.append("name: " + name + '\n');
+        builder.append("address: " + address.toString() + '\n');
+        builder.append("contact: " + contact.toString() + '\n');
+        builder.append("===============================");
+
+        return builder.toString();
     }
 }

@@ -1,6 +1,6 @@
-package com.example.billingcoresquare.models.Billing;
+package com.square.billingcore.models.Billing;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 public class BillingDesignation {
 

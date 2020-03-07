@@ -1,4 +1,4 @@
-package com.example.billingcoresquare.models.Billing;
+package com.square.billingcore.models.Billing;
 
 final public class Modifiers {
 
