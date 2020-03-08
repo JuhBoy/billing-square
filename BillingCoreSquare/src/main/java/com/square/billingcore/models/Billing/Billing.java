@@ -4,12 +4,12 @@ import com.square.billingcore.models.Customer;
 
 final public class Billing {
 
-    private Customer mCustomer;
-    private Customer mSender;
-    private BillingLogo mLogo;
-    private BillingObject mBillingObject;
-    private BillingDesignation mDesignation;
-    private BillingCgu mCgu;
+    private Customer customer;
+    private Customer sender;
+    private BillingLogo logo;
+    private BillingObject billingObject;
+    private BillingDesignation designation;
+    private BillingCgu cgu;
 
     private Billing() { }
 
@@ -18,21 +18,56 @@ final public class Billing {
         setSender(sender);
     }
 
-    public void setCustomer(Customer customer) throws NullPointerException {
-        if (customer == null)
-            throw new NullPointerException("Customer can't be null");
-        mCustomer = customer;
+    /// Getters
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setSender(Customer sender) throws NullPointerException {
-        if (sender == null)
-            throw new NullPointerException("Sender can't be null");
-        mSender = sender;
+    public Customer getSender() {
+        return sender;
     }
 
-    public void setDesignation(BillingDesignation designation) throws NullPointerException {
-        if (designation == null)
-            throw new NullPointerException("Designation can't be null");
-        mDesignation = designation;
+    public BillingLogo getLogo() {
+        return logo;
+    }
+
+    public BillingObject getBillingObject() {
+        return billingObject;
+    }
+
+    public BillingDesignation getDesignation() {
+        return designation;
+    }
+
+    public BillingCgu getCgu() {
+        return cgu;
+    }
+
+    /// Setters
+
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setSender(Customer sender) {
+        this.sender = sender;
+    }
+
+    public void setLogo(BillingLogo logo) {
+        this.logo = logo;
+    }
+
+    public void setBillingObject(BillingObject billingObject) {
+        this.billingObject = billingObject;
+    }
+
+    public void setDesignation(BillingDesignation designation) {
+        this.designation = designation;
+    }
+
+    public void setCgu(BillingCgu cgu) {
+        this.cgu = cgu;
     }
 }
