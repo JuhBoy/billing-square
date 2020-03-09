@@ -3,8 +3,11 @@ package com.square.billingcore.storage;
 import com.square.billingcore.logging.ILogger;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,8 +24,8 @@ public final class LocalFileStorage extends FileStore {
 
     @Override
     public byte[] get(String name) throws Exception {
-        String filePath = this.rootPath + '/' + name;
-        if (Exists(filePath)) return new byte[0];
+        String filePath = this.rootPath + File.separator + name;
+        if (!Exists(filePath)) return new byte[0];
 
         BufferedReader bufferedReader = null;
 
@@ -57,12 +60,42 @@ public final class LocalFileStorage extends FileStore {
     }
 
     @Override
-    public void save(String name, byte[] data) {
+    public void save(String nameWithExt, byte[] data) throws Exception {
+        String path = this.rootPath + File.separator + sanitize(nameWithExt);
 
+        File file = new File(path);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+
+        try {
+            if (!file.createNewFile() || !file.canWrite())
+                return;
+
+            fileWriter = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(fileWriter);
+
+            for (byte datum : data) {
+                bufferedWriter.write((char) datum);
+            }
+
+            bufferedWriter.flush();
+        } catch (Exception ex) {
+            logger.error(ex);
+        } finally {
+            if (bufferedWriter != null)
+                bufferedWriter.close();
+            logger.info("File written to " + file.getCanonicalPath());
+        }
     }
 
     @Override
-    public void remove(String name) {
+    public boolean remove(String name) {
+        String path = Paths.get(this.rootPath, name).toFile().getAbsolutePath();
+        File file = new File(path);
 
+        if (!file.exists())
+            return false;
+
+        return file.delete();
     }
 }

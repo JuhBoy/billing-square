@@ -11,11 +11,15 @@ public abstract class FileStore {
     }
 
     abstract public byte[] get(String name) throws Exception;
-    abstract public void save(String name, byte[] data);
-    abstract public void remove(String name);
+    abstract public void save(String name, byte[] data) throws Exception;
+    abstract public boolean remove(String name);
 
     @Override public String toString() {
         return super.toString() + " " + "Root Path: " + this.rootPath;
+    }
+
+    protected String sanitize(String name) {
+        return name.replaceAll("[:\\\\/*?|<>]", "_");
     }
 
     protected boolean Exists(String filePath) {
