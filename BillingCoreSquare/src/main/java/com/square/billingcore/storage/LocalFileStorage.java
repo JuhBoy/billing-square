@@ -98,4 +98,10 @@ public final class LocalFileStorage extends FileStore {
 
         return file.delete();
     }
+
+    @Override
+    public boolean exists(String name) {
+        File file = Paths.get(this.rootPath, name).toFile();
+        return file.exists();
+    }
 }

@@ -4,6 +4,7 @@ import com.square.billingcore.models.Customer;
 
 final public class Billing {
 
+    private BillingFileInfos fileInfos;
     private Customer customer;
     private Customer sender;
     private BillingLogo logo;
@@ -11,7 +12,9 @@ final public class Billing {
     private BillingDesignation designation;
     private BillingCgu cgu;
 
-    private Billing() { }
+    public Billing(String fileName) {
+        fileInfos = new BillingFileInfos(fileName);
+    }
 
     public Billing(Customer customer, Customer sender) {
         setCustomer(customer);
@@ -44,6 +47,10 @@ final public class Billing {
         return cgu;
     }
 
+    public BillingFileInfos getFileInfos() {
+        return fileInfos;
+    }
+
     /// Setters
 
 
@@ -69,5 +76,9 @@ final public class Billing {
 
     public void setCgu(BillingCgu cgu) {
         this.cgu = cgu;
+    }
+
+    public void setFileInfos(BillingFileInfos fileInfos) {
+        this.fileInfos = fileInfos;
     }
 }

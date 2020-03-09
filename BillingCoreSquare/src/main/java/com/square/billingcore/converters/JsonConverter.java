@@ -2,7 +2,7 @@ package com.square.billingcore.converters;
 
 import com.google.gson.Gson;
 
-class JsonConverter<T extends Object> extends Converter<T> {
+public class JsonConverter<T extends Object> extends Converter<T> {
 
     private Gson gson;
 

@@ -1,6 +1,6 @@
 package com.example.billingsquare.lib.tests;
 
-import com.square.billingcore.BillingManager;
+import com.square.billingcore.BillingController;
 import com.square.billingcore.storage.FileStore;
 
 import org.junit.Assert;
@@ -10,11 +10,12 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class FileStoreTests {
+
     @Test
     public void should_get_file() {
         try {
             String root = Paths.get(new File(".").getCanonicalPath(), "src", "test", "res").toFile().getCanonicalPath();
-            FileStore fileStore = BillingManager.getLocalFileStorage(root);
+            FileStore fileStore = BillingController.getLocalFileStorage(root);
 
             byte[] fileData = fileStore.get("fake-file.json");
             String body = new String(fileData, "UTF-8");
@@ -31,7 +32,7 @@ public class FileStoreTests {
     public void should_create_file() {
         try {
             String root = Paths.get(new File(".").getCanonicalPath(), "src", "test", "res").toFile().getCanonicalPath();
-            FileStore fileStore = BillingManager.getLocalFileStorage(root);
+            FileStore fileStore = BillingController.getLocalFileStorage(root);
 
             String fileName = "tmp.test-file.create.json";
 

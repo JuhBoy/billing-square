@@ -2,7 +2,7 @@ package com.square.billingcore.converters;
 
 import com.square.billingcore.utils.ObjectUtils;
 
-abstract class Converter<T extends Object> {
+public abstract class Converter<T extends Object> {
 
     protected Class<T> type;
 
@@ -12,4 +12,8 @@ abstract class Converter<T extends Object> {
 
     public abstract String serialize(T model);
     public abstract T deserialize(String content);
+
+    public Class<T> getInnerType() {
+        return this.type;
+    }
 }

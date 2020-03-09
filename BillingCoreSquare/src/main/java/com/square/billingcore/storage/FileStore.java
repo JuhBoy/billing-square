@@ -13,6 +13,7 @@ public abstract class FileStore {
     abstract public byte[] get(String name) throws Exception;
     abstract public void save(String name, byte[] data) throws Exception;
     abstract public boolean remove(String name);
+    abstract public boolean exists(String name);
 
     @Override public String toString() {
         return super.toString() + " " + "Root Path: " + this.rootPath;
