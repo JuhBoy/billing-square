@@ -1,7 +1,5 @@
 package com.square.billingcore.converters;
 
-import com.square.billingcore.utils.ObjectUtils;
-
 public abstract class Converter<T extends Object> {
 
     protected Class<T> type;

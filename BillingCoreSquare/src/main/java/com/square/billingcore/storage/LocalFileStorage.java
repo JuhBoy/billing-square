@@ -10,8 +10,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributeView;
+import java.util.stream.Stream;
 
 public final class LocalFileStorage extends FileStore {
 
@@ -103,5 +105,22 @@ public final class LocalFileStorage extends FileStore {
     public boolean exists(String name) {
         File file = Paths.get(this.rootPath, name).toFile();
         return file.exists();
+    }
+
+    @Override
+    public String[] getAll() {
+        File folder = new File(this.rootPath);
+        File[] files = folder.listFiles();
+
+        if (files == null || files.length < 1)
+            return new String[0];
+
+        String[] fileNames = new String[files.length];
+
+        for (int i = 0; i < files.length; i++) {
+            fileNames[i] = files[i].getName();
+        }
+
+        return fileNames;
     }
 }

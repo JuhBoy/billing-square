@@ -44,4 +44,33 @@ public class FileStoreTests {
             Assert.assertNull(ex);
         }
     }
+
+    @Test
+    public void should_load_files() {
+        try {
+            String root = Paths.get(new File(".").getCanonicalPath(), "src", "test", "res").toFile().getCanonicalPath();
+            FileStore fileStore = BillingController.getLocalFileStorage(root);
+
+            String[] fileNames = fileStore.getAll();
+
+            Assert.assertNotNull(fileNames);
+            Assert.assertEquals("fake-file.json", fileNames[0]);
+        } catch (Exception ex) {
+            Assert.assertNull(ex);
+        }
+    }
+
+    @Test
+    public void should_check_file() {
+        try {
+            String root = Paths.get(new File(".").getCanonicalPath(), "src", "test", "res").toFile().getCanonicalPath();
+            FileStore fileStore = BillingController.getLocalFileStorage(root);
+
+            boolean exist = fileStore.exists("fake-file.json");
+
+            Assert.assertTrue(exist);
+        } catch (Exception ex) {
+            Assert.assertNull(ex);
+        }
+    }
 }
