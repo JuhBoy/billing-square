@@ -3,32 +3,32 @@ package com.square.billingcore.models.Billing;
 import java.util.ArrayList;
 import java.util.List;
 
-final class BillingObject {
+public final class ObjectData {
 
-    public String mObject;
-    public String mReference;
+    public String objectBody;
+    public String reference;
     public ArrayList<ObjectDetail> additionalDetails;
 
-    public BillingObject(String object, String reference) {
+    public ObjectData(String object, String reference) {
         setObject(object);
         setReference(reference);
         additionalDetails = new ArrayList<>();
     }
 
     public String getObject() {
-        return mObject;
+        return objectBody;
     }
 
     public void setObject(String mObject) {
-        this.mObject = mObject;
+        this.objectBody = mObject;
     }
 
     public String getReference() {
-        return mReference;
+        return reference;
     }
 
     public void setReference(String mReference) {
-        this.mReference = mReference;
+        this.reference = mReference;
     }
 
     /**

@@ -1,10 +1,10 @@
 package com.square.billingcore.models.Billing;
 
-final public class BillingFileInfos {
+final public class FileInfos {
 
     private String fileName;
 
-    public BillingFileInfos(String fileName) {
+    public FileInfos(String fileName) {
         setFileName(fileName);
     }
 

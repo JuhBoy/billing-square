@@ -1,11 +1,11 @@
 package com.square.billingcore.models.Billing;
 
-final class BillingCgu {
+public final class CGU {
 
     private String title;
     private String content;
 
-    public BillingCgu(String title, String content) {
+    public CGU(String title, String content) {
         setTitle(title);
         setContent(content);
     }

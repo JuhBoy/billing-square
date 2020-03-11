@@ -4,16 +4,16 @@ import com.square.billingcore.models.Customer;
 
 final public class Billing {
 
-    private BillingFileInfos fileInfos;
+    private FileInfos fileInfos;
     private Customer customer;
     private Customer sender;
-    private BillingLogo logo;
-    private BillingObject billingObject;
-    private BillingDesignation designation;
-    private BillingCgu cgu;
+    private ImageInfos logo;
+    private ObjectData object;
+    private Description description;
+    private CGU cgu;
 
     public Billing(String fileName) {
-        fileInfos = new BillingFileInfos(fileName);
+        fileInfos = new FileInfos(fileName);
     }
 
     public Billing(Customer customer, Customer sender) {
@@ -31,23 +31,23 @@ final public class Billing {
         return sender;
     }
 
-    public BillingLogo getLogo() {
+    public ImageInfos getLogo() {
         return logo;
     }
 
-    public BillingObject getBillingObject() {
-        return billingObject;
+    public ObjectData getObject() {
+        return object;
     }
 
-    public BillingDesignation getDesignation() {
-        return designation;
+    public Description getDescription() {
+        return description;
     }
 
-    public BillingCgu getCgu() {
+    public CGU getCgu() {
         return cgu;
     }
 
-    public BillingFileInfos getFileInfos() {
+    public FileInfos getFileInfos() {
         return fileInfos;
     }
 
@@ -62,23 +62,23 @@ final public class Billing {
         this.sender = sender;
     }
 
-    public void setLogo(BillingLogo logo) {
+    public void setLogo(ImageInfos logo) {
         this.logo = logo;
     }
 
-    public void setBillingObject(BillingObject billingObject) {
-        this.billingObject = billingObject;
+    public void setObject(ObjectData object) {
+        this.object = object;
     }
 
-    public void setDesignation(BillingDesignation designation) {
-        this.designation = designation;
+    public void setDescription(Description description) {
+        this.description = description;
     }
 
-    public void setCgu(BillingCgu cgu) {
+    public void setCgu(CGU cgu) {
         this.cgu = cgu;
     }
 
-    public void setFileInfos(BillingFileInfos fileInfos) {
+    public void setFileInfos(FileInfos fileInfos) {
         this.fileInfos = fileInfos;
     }
 }

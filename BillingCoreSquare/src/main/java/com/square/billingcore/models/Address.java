@@ -2,10 +2,10 @@ package com.square.billingcore.models;
 
 final public class Address {
 
-    private String mStreet;
-    private String mCity;
-    private String mPostalCode;
-    private String mCountry;
+    private String street;
+    private String city;
+    private String postalCode;
+    private String country;
 
     public Address(String street, String city, String postalCode, String country) {
         setStreet(street);
@@ -15,35 +15,35 @@ final public class Address {
     }
 
     public String getStreet() {
-        return mStreet;
+        return street;
     }
 
     public void setStreet(String street) {
-        mStreet = street;
+        this.street = street;
     }
 
     public String getCity() {
-        return mCity;
+        return city;
     }
 
     public void setCity(String city) {
-        mCity = city;
+        this.city = city;
     }
 
     public String getPostalCode() {
-        return mPostalCode;
+        return postalCode;
     }
 
     public void setPostalCode(String postalCode) {
-        mPostalCode = postalCode;
+        this.postalCode = postalCode;
     }
 
     public String getCountry() {
-        return mCountry;
+        return country;
     }
 
     public void setCountry(String country) {
-        mCountry = country;
+        this.country = country;
     }
 
     @Override public String toString() {

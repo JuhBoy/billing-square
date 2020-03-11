@@ -2,9 +2,10 @@ package com.square.billingcore.models;
 
 final public class Contact {
 
-    private String mLastName;
-    private String mFirstName;
+    private String lastName;
+    private String firstName;
     private String phoneNumber;
+    private String email;
 
     public Contact(String lastName, String firstName) {
         setLastName(lastName);
@@ -12,19 +13,19 @@ final public class Contact {
     }
 
     public String getLastName() {
-        return mLastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.mLastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
-        return mFirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.mFirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getPhoneNumber() {
@@ -37,5 +38,13 @@ final public class Contact {
 
     @Override public String toString() {
         return getLastName() + " " + getFirstName();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
