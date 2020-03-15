@@ -1,8 +1,10 @@
 package com.square.billingcore.generators.models;
 
+import com.square.billingcore.converters.NodeSerializer;
+
 import java.awt.geom.Point2D;
 
-public abstract class Node {
+public abstract class Node extends NodeSerializer {
     private Point2D position;
     private Node child;
     private Node next;

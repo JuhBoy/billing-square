@@ -1,29 +1,21 @@
 package com.example.billingsquare.lib.tests;
 
-import com.square.billingcore.BillingController;
+import com.square.billingcore.converters.JsonConverter;
 import com.square.billingcore.generators.PDFDataLayout;
 import com.square.billingcore.generators.PDFGenerator;
 import com.square.billingcore.generators.models.ContainerNode;
-import com.square.billingcore.generators.models.Node;
-import com.square.billingcore.generators.models.PageNode;
-import com.square.billingcore.generators.models.TextNode;
 import com.square.billingcore.generators.workers.formatters.BillingMappingIdContext;
-import com.square.billingcore.generators.workers.formatters.MappingIdContext;
 import com.square.billingcore.logging.ConsoleLogger;
 import com.square.billingcore.models.Address;
 import com.square.billingcore.models.Billing.Billing;
 import com.square.billingcore.models.Billing.Description;
-import com.square.billingcore.models.Billing.FileInfos;
 import com.square.billingcore.models.Billing.Row;
 import com.square.billingcore.models.Contact;
 import com.square.billingcore.models.Customer;
-import com.square.billingcore.storage.FileStore;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class PDFGenerationTests {
@@ -35,6 +27,29 @@ public class PDFGenerationTests {
         PDFGenerator generator = new PDFGenerator(buildLayout(), context, new ConsoleLogger());
 
         Byte[] data = generator.generate(billing);
+    }
+
+    @Test
+    public void should_convert_using_node_adapter() {
+        JsonConverter<PDFDataLayout> converter = new JsonConverter<>(PDFDataLayout.class);
+
+        ContainerNode node = new ContainerNode();
+        node.setBlockIndex(32);
+
+        PDFDataLayout layout = new PDFDataLayout();
+        layout.setHead(node);
+        layout.setFileName("Mfilename.json");
+
+        try {
+            String layoutAsJsonStr = converter.serialize(layout);
+            Assert.assertNotNull(layoutAsJsonStr);
+
+            PDFDataLayout layoutDes = converter.deserialize(layoutAsJsonStr);
+            Assert.assertTrue(layoutDes.getHead() instanceof ContainerNode);
+            Assert.assertEquals(((ContainerNode)layoutDes.getHead()).getBlockIndex(), 32);
+        } catch (Exception ex) {
+            Assert.assertNull(ex);
+        }
     }
 
     private PDFDataLayout buildLayout() {

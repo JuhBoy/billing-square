@@ -1,6 +1,7 @@
 package com.square.billingcore.converters;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class JsonConverter<T extends Object> extends Converter<T> {
 
@@ -8,7 +9,14 @@ public class JsonConverter<T extends Object> extends Converter<T> {
 
     public JsonConverter(Class<T> type) {
         super(type);
-        gson = new Gson();
+        GsonBuilder builder = new GsonBuilder();
+
+        IJsonAdapter adapter = AdapterFactory.get(type.getName());
+        Class underlyingClass = AdapterFactory.getUnderlyingClass(type.getName());
+        if (adapter != null)
+            builder.registerTypeAdapter(underlyingClass, adapter);
+
+        gson = builder.create();
     }
 
     @Override
